@@ -1,4 +1,4 @@
-const mongoose = require("../config/mongodb");
+const mongoose = require("../../config/mongodb");
 const bcrypt = require("bcrypt")
 
 //Crear departaments SCHEMA - OBJETO

@@ -1,4 +1,4 @@
-const categoriesDepartamentsModel = require("../models/categoriesDepartamentsModel")
+const categoriesDepartamentsModel = require("../../models/departaments/categoriesDepartamentsModel")
 module.exports={
     getAll:async function(req, res, next) {
       try{
@@ -11,10 +11,14 @@ module.exports={
     create:async function(req, res, next) {
         try{
           console.log(req.body)
-          console.log(req.body.nameCategory)
+          console.log(req.body.departamentType)
 
           const document = new categoriesDepartamentsModel({
-            nameCategory:req.body.nameCategory
+            departamentType:req.body.departamentType,
+            departamentTypeCapacity: req.body.departamentTypeCapacity,
+            departamentTypeBedrooms:req.body.departamentTypeBedrooms,
+            departamentTypeBathrooms:req.body.departamentTypeBathrooms,
+
           })
 
           const response = await document.save()

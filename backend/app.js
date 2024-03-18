@@ -5,19 +5,21 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//RUTAS-------------
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var departamentsRouter = require('./routes/departaments');
-var bannersRouter = require('./routes/banners');
-var registerRouter = require('./routes/register');
-var categoriesDepartamentsRouter = require('./routes/categoriesDepartaments');
-
-
-
+//login
+var usersRouter = require('./routes/login/users');
+var bannersRouter = require('./routes/homepage/banners');
+//departaments
+var departamentsRouter = require('./routes/departaments/departaments');
+var usersDepartamentsRouter = require('./routes/departaments/usersDepartaments');
+var categoriesDepartamentsRouter = require('./routes/departaments/categoriesDepartaments');
+var cityDepartamentsRouter = require('./routes/departaments/cityDepartaments');
+var priceDepartamentsRouter = require('./routes/departaments/priceDepartaments');
 
 var app = express();
 
-app.set("secretKey", "123")
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,13 +30,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//Token
+app.set("secretKey", "123")
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/departaments',departamentsRouter);
-app.use('/banners', bannersRouter);
-app.use('/register', registerRouter);
-app.use('/categories', categoriesDepartamentsRouter);
 
 /** HEADER INICIO CORS */
 app.use(function (req, res, next) {
@@ -52,6 +50,20 @@ app.options("/*", function (req, res, next) {
   res.send(200);
 });
 
+
+//RUTAS--------
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/banners', bannersRouter);
+app.use('/departaments',departamentsRouter);
+app.use('/departaments/users', usersDepartamentsRouter);
+app.use('/departaments/categories', categoriesDepartamentsRouter);
+app.use('/departaments/city', cityDepartamentsRouter);
+app.use('/departaments/price', priceDepartamentsRouter);
+
+
+
+
 //VALIDAR TOKEN
 function verifyToken(req, res, next) {
   const authHeader = req.headers["authorization"];
@@ -68,7 +80,6 @@ function verifyToken(req, res, next) {
     }
   });
 }
-
 app.verifyToken = verifyToken;
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

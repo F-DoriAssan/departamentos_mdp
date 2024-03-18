@@ -1,4 +1,4 @@
-const departamentsModel = require("../models/departamentsModel")
+const departamentsModel = require("../../models/departaments/departamentsModel")
 
 const getAll = async function (req, res, next) {
     try {
@@ -33,18 +33,10 @@ const create = async function (req, res, next) {
     try {
         console.log(req.body)
         const departaments = new departamentsModel({
-            nameDepartaments: req.body.nameDepartaments,
-            dniOwner: req.body.dniOwner,
-            nameAdministrator: req.body.nameAdministrator,
-            phoneOwner: req.body.phoneOwner,
-            departamentType: req.body.departamentType,
-            departamentTypeUnit: req.body.departamentTypeUnit,
-            departamentTypeCapacity: req.body.departamentTypeCapacity,
-            departamentTypeBedrooms: req.body.departamentTypeBedrooms,
-            departamentTypeBathrooms: req.body.departamentTypeBathrooms, 
-            price: req.body.price,    
-            status: req.body.status,
+            departaments_users: req.body.departaments_users, //Relacion de bases con categorias
             departaments_category: req.body.departaments_category, //Relacion de bases con categorias
+            departaments_city: req.body.departaments_city, //Relacion de bases con categorias
+            departaments_price: req.body.departaments_price, //Relacion de bases con categorias
     
         })
         const document = await  departaments.save()
