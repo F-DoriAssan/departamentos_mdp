@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const categoriesDepartamentsControllers = require("../../controllers/departaments/categoriesDepartamentsController")
+const categoriesDepartamentsControllers = require("../../controllers/departaments/categoriesDepartamentsControllers")
 
 /* GET departaments listing. */
 router.get('/', categoriesDepartamentsControllers.getAll);

@@ -1,7 +1,7 @@
-const mongoose = require("../../config/mongodb");
+const mongoose = require("../../../config/mongodb");
 
 //Crear departaments SCHEMA - OBJETO
-const usersDepartamentsSchema = mongoose.Schema({
+const usersOwnerSchema = mongoose.Schema({
     nameOwner: {
         type: String,
         required: [true, "El campo nombre del propietario es obligatorio"],
@@ -26,6 +26,6 @@ const usersDepartamentsSchema = mongoose.Schema({
 
 
 //Crear el MODELO de mongoose
-const usersDepartamentsModel = mongoose.model('departaments_users', usersDepartamentsSchema)
+const usersOwnerModel = mongoose.model('departaments_users_owner', usersOwnerSchema)
 
-module.exports = usersDepartamentsModel;
+module.exports = usersOwnerModel;

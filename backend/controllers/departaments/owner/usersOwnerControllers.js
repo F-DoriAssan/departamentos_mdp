@@ -1,9 +1,9 @@
-const usersDepartamentsModel = require("../../models/departaments/usersDepartamentsModel")
+const usersOwnerModel = require("../../../models/departaments/owner/usersOwnerModel")
 
 const getAll = async function (req, res, next) {
     try {
-        const documentGetAll = await usersDepartamentsModel.find()
-        .populate("departaments_users")//populate relacion de bases
+        const documentGetAll = await usersOwnerModel.find()
+        .populate("departaments_users_owner")//populate relacion de bases
         //.sort({nameDepartaments: 1, price: -1}) //sort para ordenar los datos
         //.select("nameDepartaments, price") //seleccionar lo que queremos mostrar
     /** query paramiters */
@@ -19,7 +19,7 @@ const getAll = async function (req, res, next) {
 
 const getById = async function (req, res, next) {
     try {
-        const documentById = await usersDepartamentsModel.findById(req.params.id)
+        const documentById = await usersOwnerModel.findById(req.params.id)
     /** query paramiters */
     res.status(200).json(documentById);
     } catch (e) {
@@ -32,14 +32,14 @@ const getById = async function (req, res, next) {
 const create = async function (req, res, next) {
     try {
         console.log(req.body)
-        const usersDepartaments = new usersDepartamentsModel({
+        const usersDepartamentsOwner = new usersOwnerModel({
             nameOwner: req.body.nameOwner,
             lastNameOwner: req.body.lastNameOwner,
             dniOwner: req.body.dniOwner,
             nameAdministrator: req.body.nameAdministrator,
             phoneOwner: req.body.phoneOwner,
         })
-        const document = await  usersDepartaments.save()
+        const document = await  usersDepartamentsOwner.save()
         res.status(201).json(document);
     } catch (e) {
         console.log("CREATE users DEPARTAMENTS ERRORS",e)
@@ -54,7 +54,7 @@ const create = async function (req, res, next) {
 
 const update = async function (req, res, next) {
     try {
-        await usersDepartamentsModel.updateOne({_id:req.params.id},req.body)
+        await usersOwnerModel.updateOne({_id:req.params.id},req.body)
         console.log(req.params.id);
         res.status(204);
     } catch (e) {
@@ -68,7 +68,7 @@ const update = async function (req, res, next) {
 
 const remove = async function (req, res, next) {
     try {
-        await usersDepartamentsModel.deleteOne({_id:req.params.id})
+        await usersOwnerModel.deleteOne({_id:req.params.id})
         console.log(req.params.id);
         res.status(204);
     } catch (e) {

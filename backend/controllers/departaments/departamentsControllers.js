@@ -3,7 +3,7 @@ const departamentsModel = require("../../models/departaments/departamentsModel")
 const getAll = async function (req, res, next) {
     try {
         const documentGetAll = await departamentsModel.find()
-        .populate("departamentsUsers").populate("departamentsCategories").populate("departamentsCities").populate("departamentsPrices")
+        .populate("departamentsCategories").populate("departamentsCities").populate("departamentsPrices")
         //.sort({nameDepartaments: 1, price: -1}) //sort para ordenar los datos
         //.select("nameDepartaments, price") //seleccionar lo que queremos mostrar
     /** query paramiters */
@@ -20,7 +20,7 @@ const getAll = async function (req, res, next) {
 const getById = async function (req, res, next) {
     try {
         const documentById = await departamentsModel.findById(req.params.id)
-        .populate("departamentsUsers").populate("departamentsCategories").populate("departamentsCities").populate("departamentsPrices")
+       .populate("departamentsCategories").populate("departamentsCities").populate("departamentsPrices")
 
     /** query paramiters */
     res.status(200).json(documentById);
@@ -35,7 +35,6 @@ const create = async function (req, res, next) {
     try {
         console.log(req.body)
         const departaments = new departamentsModel({
-            departamentsUsers: req.body.departamentsUsers, 
             departamentsCategories: req.body.departamentsCategories, 
             departamentsCities: req.body.departamentsCities, 
             departamentsPrices: req.body.departamentsPrices, 
