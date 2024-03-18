@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const priceDepartamentsControlllers = require("../../controllers/departaments/priceDepartamentsControlllers")
+const priceDepartamentsControlllers = require("../../controllers/departaments/priceDepartamentsController")
 
 /* GET departaments listing. */
 router.get('/', priceDepartamentsControlllers.getAll);

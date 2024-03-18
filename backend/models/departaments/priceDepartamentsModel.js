@@ -18,8 +18,8 @@ const priceDepartamentsSchema = new mongoose.Schema({
 }
 });
 //Schema para modificar datos
-departamentsSchema.virtual("price_currency").get(function () {
+priceDepartamentsSchema.virtual("price_currency").get(function () {
     return `$ ${this.price}`;
 });
   
-module.exports = mongoose.model("departaments_price", priceDepartamentsSchema);
+module.exports = mongoose.model("departaments_prices", priceDepartamentsSchema);

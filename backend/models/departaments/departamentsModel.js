@@ -2,22 +2,28 @@ const mongoose = require("../../config/mongodb");
 
 //Crear departaments SCHEMA - OBJETO
 const departamentsSchema = mongoose.Schema({
-    departaments_users: {
+    departamentsUsers: {
         type: mongoose.Schema.ObjectId,
-        ref: "departaments_categories",
+        ref: "departaments_users",
+        required: [true, "El campo dpais es obligatorio"],
+
       },
-      departaments_categories: {
+    departamentsCategories: {
         type: mongoose.Schema.ObjectId,
         ref: "departaments_categories",
+        required: [true, "El campo dpais es obligatorio"],
+
       },
-      departaments_city: {
+    departamentsCities: {
         type: mongoose.Schema.ObjectId,
-        ref: "departaments_categories",
+        ref: "departaments_cities",
       },
 
-    departaments_price: {
+    departamentsPrices: {
         type: mongoose.Schema.ObjectId,
-        ref: "departaments_categories",
+        ref: "departaments_prices",
+        required: [true, "El campo dpais es obligatorio"],
+
       },
       status: {
         type: String,

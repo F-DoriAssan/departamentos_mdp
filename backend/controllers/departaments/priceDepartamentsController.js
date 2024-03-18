@@ -1,4 +1,4 @@
-const priceDepartamentsModel = require("../../models/departaments/usersDepartamentsModel")
+const priceDepartamentsModel = require("../../models/departaments/priceDepartamentsModel")
 
 const getAll = async function (req, res, next) {
     try {

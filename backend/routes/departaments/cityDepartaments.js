@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const cityDepartamentsControlllers = require("../../controllers/departaments/cityDepartamentsControlllers")
+const cityDepartamentsControlllers = require("../../controllers/departaments/cityDepartamentsControllers")
 
 /* GET departaments listing. */
 router.get('/', cityDepartamentsControlllers.getAll);
@@ -24,5 +24,7 @@ cityDepartamentsControlllers.update)
 router.delete('/:id', 
 (req, res, next) => req.app.verifyToken(req, res, next), //Validacion de Token
 cityDepartamentsControlllers.remove)
+
+
 
 module.exports = router;
